@@ -1,0 +1,15 @@
+/* ============
+index.scss
+Our main style file to import scss files
+============ */
+
+/* ============
+Third Party Libs
+============ */
+@import "~normalize.css/normalize.css"; // Normalize CSS across browsers
+
+/* ============
+Core
+Modules that apply site wide
+============ */
+@import "core/typography.scss"; // Type settings and fonts
