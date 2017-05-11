@@ -1,6 +1,6 @@
 {
   "name": "mlb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Baseball stats",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.1",
+    "gsap": "^1.19.1",
     "node-sass": "^4.5.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

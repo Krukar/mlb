@@ -11,30 +11,26 @@ import * as utilities from 'actions/utilities.jsx'
 
 // Components
 import DatePicker from 'components/DatePicker.jsx';
+import Loading from 'components/Loading.jsx';
+
+// Views
 import List from 'views/List.jsx';
 
 class App extends Component{
   constructor(props){
     super(props);
-  }
-
-  componentWillMount(){
-    let today = new Date();
-    let date = utilities.getYYYYMMDD(today);
 
     this.state = {
-      date: date
-    };
+      games: undefined,
+      favourite: 'Blue Jays'
+    }
   }
 
-  setDate = (event) => {
-    let date = event.target.value;
-
-    utilities.getList(date).then(response => {
+  setDate = (date) => {
+    utilities.getList(date).then(response =>{
       this.setState({
-        games: response.data.games
+        games: response.game ? response.game : undefined
       });
-
       console.log(this.state)
     });
   }
@@ -42,8 +38,11 @@ class App extends Component{
   render() {
     return (
       <div className="app">
-        <DatePicker value={this.state.date} handleChange={this.setDate}></DatePicker>
-        <List value={this.state.date}></List>
+        <DatePicker handleChange={this.setDate}></DatePicker>
+        {this.state.games ?
+          <List games={this.state.games} favourite={this.state.favourite}></List>
+          : <Loading></Loading>
+        }
       </div>
     );
   }

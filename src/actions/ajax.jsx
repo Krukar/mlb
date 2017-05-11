@@ -12,9 +12,10 @@ The Ajax call to our API
 Requires a url
 ============ */
 export function get(url){
-  return fetch(url).then(function(response){
+  return fetch(url).then(response => {
+    if(!response.ok){
+      throw response.statusText;
+    }
     return response.json()
-  }).then(function(response){
-    return response
-  })
+  }).then(response => response).catch(error => error);
 }

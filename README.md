@@ -4,6 +4,12 @@
 
 # Release History
 
+TODO
+Make sure you add a fancy loading animation
+
+##0.0.03
+- List JS complete, now added error states and loading
+
 ##0.0.02
 - Refactored to store state inside App.jsx and pass props to children
 
