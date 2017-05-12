@@ -35,14 +35,16 @@ export const createDiv = (game, i) =>{
     <div className="game" key={i}>
       {/* Ternary is required since games that have not been played do not have a linescore entry */}
       <div className={"home" + (game.linescore && game.linescore.r.home > game.linescore.r.away ? ' winner' : '')}>
-        {game.home_team_name}<span className="score">{game.linescore ? game.linescore.r.home : null}</span>
+        {game.home_team_name}
+        <span className="score">{game.linescore ? game.linescore.r.home : null}</span>
+      </div>
+      <div className={"away" + (game.linescore && game.linescore.r.away > game.linescore.r.home ? ' winner' : '')}>
+        {game.away_team_name}
+        <span className="score">{game.linescore ? game.linescore.r.away : null}</span>
+      </div>
+      <div className="status">{game.status.status}</div>
     </div>
-    <div className={"away" + (game.linescore && game.linescore.r.away > game.linescore.r.home ? ' winner' : '')}>
-      {game.away_team_name}<span className="score">{game.linescore ? game.linescore.r.away : null}</span>
-  </div>
-  <div className="status">{game.status.status}</div>
-</div>
-)
+  )
 }
 
 
@@ -56,12 +58,12 @@ export const getList = date =>{
   let url = 'http://gd2.mlb.com/components/game/mlb/year_' + split[0] + '/month_' + split[1] + '/day_' + split[2] + '/master_scoreboard.json';
 
   return ajax.get(url).then(response =>{
-    if(!response.data.games){
-      return 'error'
+    if(!response.game){
+      return 'No Games Today'
     }
 
-    return response.data.games
-  })
+    return Array.isArray(response.game) ? response.game : [response.game]
+  });
 }
 
 /* ============

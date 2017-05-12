@@ -29,9 +29,12 @@ class App extends Component{
   setDate = (date) => {
     utilities.getList(date).then(response =>{
       this.setState({
-        games: response.game ? response.game : undefined
+        games: response
       });
-      console.log(this.state)
+    }).catch(error =>{
+      this.setState({
+        games: 'There was a problem loading the data, please try again'
+      });
     });
   }
 
@@ -42,10 +45,10 @@ class App extends Component{
         {this.state.games ?
           <List games={this.state.games} favourite={this.state.favourite}></List>
           : <Loading></Loading>
-        }
-      </div>
-    );
-  }
+      }
+    </div>
+  );
+}
 }
 
 export default App;

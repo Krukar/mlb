@@ -5,7 +5,11 @@
 # Release History
 
 TODO
-Make sure you add a fancy loading animation
+- Make sure you add a fancy loading animation
+- mlb logo favicon
+
+##0.0.04
+- Error handling complete on list
 
 ##0.0.03
 - List JS complete, now added error states and loading

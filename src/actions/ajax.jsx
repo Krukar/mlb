@@ -16,6 +16,7 @@ export function get(url){
     if(!response.ok){
       throw response.statusText;
     }
-    return response.json()
-  }).then(response => response).catch(error => error);
+
+    return response.json();
+  }).then(response => response.data.games);
 }
