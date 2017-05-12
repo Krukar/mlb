@@ -15,6 +15,11 @@ createList
 - Takes an array of games and a favourite team and returns a rendered list with the favourite team on top
 ============ */
 export const createList = (array, favourite) =>{
+  // The API returns an object instead of an array if only 1 game was played. This check will bypass the reduce if that happens
+  if(!Array.isArray(array)){
+    return createDiv(array, 0);
+  }
+
   return array.reduce((acc, game, i) =>{
     if(game.home_team_name === favourite || game.away_team_name === favourite){
       acc.unshift(createDiv(game, i));
@@ -33,16 +38,16 @@ createDiv
 export const createDiv = (game, i) =>{
   return (
     <div className="game" key={i}>
-      {/* Ternary is required since games that have not been played do not have a linescore entry */}
-      <div className={"home" + (game.linescore && game.linescore.r.home > game.linescore.r.away ? ' winner' : '')}>
-        {game.home_team_name}
-        <span className="score">{game.linescore ? game.linescore.r.home : null}</span>
-      </div>
-      <div className={"away" + (game.linescore && game.linescore.r.away > game.linescore.r.home ? ' winner' : '')}>
-        {game.away_team_name}
-        <span className="score">{game.linescore ? game.linescore.r.away : null}</span>
-      </div>
-      <div className="status">{game.status.status}</div>
+        {/* Ternary is required since games that have not been played do not have a linescore entry */}
+        <div className={"home" + (game.linescore && game.linescore.r.home > game.linescore.r.away ? ' winner' : '')}>
+          {game.home_team_name}
+          <span className="score">{game.linescore ? game.linescore.r.home : null}</span>
+        </div>
+        <div className={"away" + (game.linescore && game.linescore.r.away > game.linescore.r.home ? ' winner' : '')}>
+          {game.away_team_name}
+          <span className="score">{game.linescore ? game.linescore.r.away : null}</span>
+        </div>
+        <div className="status">{game.status.status}</div>
     </div>
   )
 }
@@ -59,10 +64,11 @@ export const getList = date =>{
 
   return ajax.get(url).then(response =>{
     if(!response.game){
-      return 'No Games Today'
+      throw 'No Games Today'
     }
+    console.log(response)
 
-    return Array.isArray(response.game) ? response.game : [response.game]
+    return response.game
   });
 }
 

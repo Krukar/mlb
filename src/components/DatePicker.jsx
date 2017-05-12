@@ -26,7 +26,7 @@ class DatePicker extends Component{
     this.props.handleChange(date);
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     let date = event.target.value;
 
     this.setState({

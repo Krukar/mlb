@@ -16,8 +16,7 @@ class List extends Component{
   }
 
   render() {
-    // Prop will either be an array of games, a string to indicate no games on a particular day or an error message
-    let games = Array.isArray(this.props.games) ? utilities.createList(this.props.games, this.props.favourite) : this.props.games;
+    let games = utilities.createList(this.props.games, this.props.favourite);
 
     return (
       <div className="list">
