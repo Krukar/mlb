@@ -18,7 +18,7 @@ export function get(url){
     }
 
     return response.json();
-  }).then(response => response.data.games)
+  }).then(response => response)
   .catch(error => {
     throw 'There was a problem loading the data, please try again';
   });

@@ -7,23 +7,17 @@ This is our date picker
 // React
 import React, { Component } from 'react';
 
-// Actions
-import * as utilities from 'actions/utilities.jsx'
-
 class DatePicker extends Component{
   constructor(props) {
     super(props);
   }
 
   componentWillMount(){
-    let today = new Date();
-    let date = utilities.getYYYYMMDD(today);
-
     this.state = {
-      date: date
+      date: this.props.date
     };
 
-    this.props.handleChange(date);
+    this.props.handleChange(this.props.date);
   }
 
   handleChange = event => {

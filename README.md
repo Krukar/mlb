@@ -6,9 +6,13 @@
 - Make sure you add a fancy loading animation
 - mlb logo favicon
 - npm run prod with console logs removed
-- Lodash for debounce
+- redirect /details
+NEXT STEP: Add details page
 
 ## Release History
+
+### v0.0.05
+- Detail page JS set up
 
 ### v0.0.04
 - Error handling complete on list

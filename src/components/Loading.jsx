@@ -3,11 +3,11 @@ Loading.jsx
 Generic loading animation
 ============ */
 
-// React
-import React, { Component } from 'react';
-
 // Libraries
 import {TweenMax} from 'gsap';
+
+// React
+import React, { Component } from 'react';
 
 class Loading extends Component{
   render() {
