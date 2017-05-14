@@ -93,13 +93,31 @@ export const players = data =>{
 
   let batters = [];
   for(let [index, value] of data.batter.entries()){
-    console.log(value)
-    // Convert their name to the format in example-detail
-    batters.push(<div className="player" key={index}>{value.name_display_first_last}</div>);
+    batters.push(
+      <div className="player" key={index}>
+        <div className="name">{value.name}</div>
+        <div className="stat">{value.ab}</div>
+        <div className="stat">{value.r}</div>
+        <div className="stat">{value.h}</div>
+        <div className="stat">{value.rbi}</div>
+        <div className="stat">{value.bb}</div>
+        <div className="stat">{value.so}</div>
+        <div className="stat">{value.avg}</div>
+      </div>
+    );
   }
 
   return(
     <div className="batters">
+      <div className="header">
+        <div className="stat">AB</div>
+        <div className="stat">R</div>
+        <div className="stat">H</div>
+        <div className="stat">RBI</div>
+        <div className="stat">BB</div>
+        <div className="stat">SO</div>
+        <div className="stat">AVG</div>
+      </div>
       {batters}
     </div>
   )

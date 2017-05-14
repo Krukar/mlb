@@ -7,7 +7,7 @@ The list of games
 import React, { Component } from 'react';
 
 // Actions
-import * as utilities from 'actions/utilities.jsx'
+import * as list from 'actions/list.jsx';
 
 class Games extends Component{
   constructor(props) {
@@ -15,7 +15,7 @@ class Games extends Component{
   }
 
   render() {
-    let games = utilities.createList(this.props.games, this.props.favourite);
+    let games = this.props.games ? list.games(this.props.games, this.props.favourite) : undefined;
 
     return (
       <div className="games">

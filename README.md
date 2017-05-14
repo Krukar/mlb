@@ -6,10 +6,11 @@
 - Make sure you add a fancy loading animation
 - mlb logo favicon
 - npm run prod with console logs removed
-- redirect /details
-NEXT STEP: Add details page
 
 ## Release History
+
+### v0.0.06
+- JS Complete
 
 ### v0.0.05
 - Detail page JS set up

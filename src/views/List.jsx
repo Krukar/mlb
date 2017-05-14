@@ -9,10 +9,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // Actions
+import * as list from 'actions/list.jsx';
 import * as utilities from 'actions/utilities.jsx';
 
 // Components
 import DatePicker from 'components/DatePicker.jsx';
+import FavouritePicker from 'components/FavouritePicker.jsx';
 import Games from 'components/Games.jsx';
 import Loading from 'components/Loading.jsx';
 
@@ -21,9 +23,9 @@ class List extends Component{
     super(props);
 
     this.state = {
-      date: this.props.match.params.date ? this.props.match.params.date : utilities.getYYYYMMDD(new Date()),
+      date: this.props.match.params.date ? this.props.match.params.date : utilities.convertToYYYYMMDD(new Date()),
       error: false,
-      favourite: 'Blue Jays',
+      favourite: utilities.favourite(),
       games: undefined,
       loading: true
     }
@@ -41,7 +43,7 @@ class List extends Component{
   setDate = (date) => {
     this.reset();
 
-    utilities.getList(date).then(response =>{
+    list.get(date).then(response =>{
       // A list of games was successfully returned
       this.setState({
         error: false,
@@ -61,21 +63,47 @@ class List extends Component{
     });
   }
 
+  setFavourite = (favourite) =>{
+    this.setState({
+      favourite: favourite
+    });
+
+    localStorage.setItem('favourite', JSON.stringify(favourite));
+  }
+
+  error = () =>{
+    if(!this.state.error){
+      return null;
+    }
+
+    return(
+      <div className="error">
+        {this.state.error}
+      </div>
+    )
+  }
+
+  loading = () =>{
+    if(!this.state.loading){
+      return null;
+    }
+
+    return(
+      <Loading></Loading>
+    )
+  }
+
   render() {
+    let error = this.error();
+    let loading = this.loading();
+
     return (
       <div className="list">
-        <DatePicker handleChange={this.setDate} date={this.state.date}></DatePicker>
-        {this.state.loading &&
-          <Loading></Loading>
-        }
-        {this.state.error &&
-          <div className="error">
-            {this.state.error}
-          </div>
-        }
-        {this.state.games &&
-          <Games games={this.state.games} favourite={this.state.favourite}></Games>
-        }
+        <DatePicker date={this.state.date} handleChange={this.setDate}></DatePicker>
+        <FavouritePicker favourite={this.state.favourite} handleChange={this.setFavourite}></FavouritePicker>
+        {loading}
+        {error}
+        <Games games={this.state.games} favourite={this.state.favourite}></Games>
       </div>
     );
   }

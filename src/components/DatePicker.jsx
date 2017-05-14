@@ -17,6 +17,7 @@ class DatePicker extends Component{
       date: this.props.date
     };
 
+    // When the app loads we init with today's data
     this.props.handleChange(this.props.date);
   }
 
@@ -33,9 +34,7 @@ class DatePicker extends Component{
   render() {
     return (
       <div className="datePicker">
-        <form>
           <input name="date" type="date" value={this.state.date} onChange={this.handleChange}/>
-        </form>
       </div>
     );
   }

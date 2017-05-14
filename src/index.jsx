@@ -9,7 +9,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Components
-import App from 'components/App.jsx';
+import App from 'App.jsx';
 
 // Stylesheets
 import './sass/index.scss';
