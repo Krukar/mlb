@@ -1,0 +1,19 @@
+.innings{
+  flex: 1 0 100%;
+  margin-bottom: 2rem;
+  .inning, .stat{
+    width: 7%;
+    text-align: center;
+  }
+  .header, .home, .away{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.25rem;
+  }
+  .header{
+    font-weight: bold;
+  }
+  .team{
+    width: 16%;
+  }
+}

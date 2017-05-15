@@ -1,10 +1,11 @@
 {
   "name": "mlb",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Baseball stats",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --progress --watch --config webpack.config.js"
+    "dev": "webpack --progress --watch --config webpack.config.js",
+    "prod": "webpack --progress --config webpack.config.js -p"
   },
   "repository": {
     "type": "git",

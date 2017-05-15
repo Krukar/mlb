@@ -1,0 +1,33 @@
+.players{
+  flex: 1 0 100%;
+  .batters{
+    &:hover{
+      .player{
+        opacity: 0.5;
+      }
+    }
+    .header, .player{
+      display: flex;
+      flex: 1 0 100%;
+      .name{
+        flex: 1 0 30%;
+      }
+      .stat{
+        flex: 1 0 10%;
+
+        text-align: center;
+      }
+    }
+    .header{
+      margin-bottom: 0.25rem;
+
+      font-weight: bold;
+    }
+    .player{
+      margin-bottom: 0.125rem;
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+}

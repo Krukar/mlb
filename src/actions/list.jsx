@@ -41,7 +41,7 @@ export const games = (array, favourite) =>{
 
   return array.reduce((acc, value) =>{
     if(value.home_name_abbrev === favourite || value.away_name_abbrev === favourite){
-      acc.unshift(game(value));
+      acc.unshift(game(value, favourite));
     }
     else{
       acc.push(game(value));
@@ -54,15 +54,21 @@ export const games = (array, favourite) =>{
 game
 - Takes a game object and returns either a div or a link
 ============ */
-export const game = (game) =>{
+export const game = (game, favourite) =>{
   if(!game.linescore){
     return (
       <div className="game" key={game.gameday}>
         <div className="home">
-          {game.home_team_name}
+          <div className="team">
+            <span className={"name" + (game.linescore && game.linescore.r.home > game.linescore.r.away ? ' winner' : '') + (favourite === game.home_name_abbrev ? ' favourite' : '')}>{game.home_team_name}</span>
+            <span className="city">{game.home_team_city}</span>
+          </div>
         </div>
         <div className="away">
-          {game.away_team_name}
+          <div className="team">
+            <span className={"name" + (game.linescore && game.linescore.r.away > game.linescore.r.home ? ' winner' : '') + (favourite === game.away_name_abbrev ? ' favourite' : '')}>{game.away_team_name}</span>
+            <span className="city">{game.away_team_city}</span>
+          </div>
         </div>
         <div className="status">{game.status.status}</div>
       </div>
@@ -72,12 +78,18 @@ export const game = (game) =>{
   return (
     <div className="game" key={game.gameday}>
       <Link to={'/details/' + game.gameday}>
-        <div className={"home" + (game.linescore && game.linescore.r.home > game.linescore.r.away ? ' winner' : '')}>
-          {game.home_team_name}
+        <div className="home">
+          <div className="team">
+            <span className={"name" + (game.linescore && game.linescore.r.home > game.linescore.r.away ? ' winner' : '') + (favourite === game.home_name_abbrev ? ' favourite' : '')}>{game.home_team_name}</span>
+            <span className="city">{game.home_team_city}</span>
+          </div>
           <span className="score">{game.linescore ? game.linescore.r.home : null}</span>
         </div>
-        <div className={"away" + (game.linescore && game.linescore.r.away > game.linescore.r.home ? ' winner' : '')}>
-          {game.away_team_name}
+        <div className="away">
+          <div className="team">
+            <span className={"name" + (game.linescore && game.linescore.r.away > game.linescore.r.home ? ' winner' : '') + (favourite === game.away_name_abbrev ? ' favourite' : '')}>{game.away_team_name}</span>
+            <span className="city">{game.away_team_city}</span>
+          </div>
           <span className="score">{game.linescore ? game.linescore.r.away : null}</span>
         </div>
         <div className="status">{game.status.status}</div>

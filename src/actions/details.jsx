@@ -32,13 +32,14 @@ export const get = id =>{
 innings
 - Takes a score object and renders home and away inning divs
 ============ */
-export const innings = linescore =>{
-  if(!linescore){
+export const innings = data =>{
+  if(!data){
     return null
   }
 
-  let home = inning(linescore, 'home')
-  let away = inning(linescore, 'away')
+  let home = inning(data.linescore, 'home', data.home_sname);
+  let away = inning(data.linescore, 'away', data.away_sname);
+
   return (
     <div className="container">
       <div className="header">
@@ -65,7 +66,7 @@ export const innings = linescore =>{
 inning
 - Takes data and home or away and renders inning row
 ============ */
-export const inning = (linescore, team) =>{
+export const inning = (linescore, team, name) =>{
   let scores = [];
   for(let [index, value] of linescore.inning_line_score.entries()){
     scores.push(<div className="inning" key={value.inning}>{value[team]}</div>);
@@ -73,7 +74,7 @@ export const inning = (linescore, team) =>{
 
   return(
     <div className={team}>
-      <div className="team">{linescore[team + '_team_code']}</div>
+      <div className="team">{name}</div>
       {scores}
       <div className="stat">{linescore[team + '_team_runs']}</div>
       <div className="stat">{linescore[team + '_team_hits']}</div>
@@ -110,6 +111,7 @@ export const players = data =>{
   return(
     <div className="batters">
       <div className="header">
+        <div className="name">Name</div>
         <div className="stat">AB</div>
         <div className="stat">R</div>
         <div className="stat">H</div>

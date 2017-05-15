@@ -1,0 +1,36 @@
+/* ============
+Core Mixins
+============ */
+// Medium Breakpoint
+@mixin medium {
+  @media (min-width: #{$medium}) {
+    @content;
+  }
+}
+
+// Large Breakpoint
+@mixin large {
+  @media (min-width: #{$large}) {
+    @content;
+  }
+}
+
+// Defualt container
+@mixin container{
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ============
+Display Mixins
+============ */
+// Default roundness
+@mixin round{
+  border-radius: 0.25rem;
+}
+
+// Default transition for CSS
+@mixin transitions($prop: all, $speed: 0.25s){
+  transition: $prop $speed cubic-bezier(0, 0, 0.5, 1);
+}

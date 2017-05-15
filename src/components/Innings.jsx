@@ -15,7 +15,7 @@ class Innings extends Component{
   }
 
   render() {
-    let innings = details.innings(this.props.linescore);
+    let innings = details.innings(this.props.data);
 
     return (
       <div className="innings">

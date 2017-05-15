@@ -14,8 +14,6 @@ import List from 'views/List.jsx';
 class App extends Component{
   constructor(props){
     super(props);
-
-    console.log('app.jsx init');
   }
 
   render() {

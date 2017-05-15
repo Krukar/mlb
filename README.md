@@ -3,11 +3,12 @@
 - Used https://github.com/facebookincubator/create-react-app as a template but created everything myself from scratch to learn
 
 ## TODO
-- Make sure you add a fancy loading animation
-- mlb logo favicon
-- npm run prod with console logs removed
+- NPM Run Prod script should remove console logs
 
 ## Release History
+
+### v0.1.0
+- Project completed and sent to friends to QA and feedback before approval
 
 ### v0.0.06
 - JS Complete

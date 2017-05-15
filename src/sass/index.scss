@@ -12,4 +12,24 @@ Third Party Libs
 Core
 Modules that apply site wide
 ============ */
+@import "core/variables.scss"; // Input to select date
+@import "core/mixins.scss"; // Input to select date
+@import "core/global.scss"; // Global styles
 @import "core/typography.scss"; // Type settings and fonts
+
+/* ============
+Views
+React views that house components
+============ */
+@import "views/list.scss"; // Games list
+@import "views/details.scss"; // Details view
+
+/* ============
+Components
+React components
+============ */
+@import "components/datePicker.scss"; // Input to select date
+@import "components/favouritePicker.scss"; // Select to select favourite team
+@import "components/games.scss"; // List of games
+@import "components/innings.scss"; // Displays score per innings
+@import "components/players.scss"; // Displays batters per team

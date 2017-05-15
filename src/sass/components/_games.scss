@@ -1,0 +1,61 @@
+.games{
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0 100%;
+
+  @include transitions;
+  &:hover{
+    a{
+      opacity: 0.25;
+    }
+  }
+  .game{
+    flex: 1 0 100%;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: solid thin $grey;
+
+    @include transitions;
+    @include medium{
+      flex: 1 0 50%;
+    }
+    @include large{
+      flex: 1 0 25%;
+    }
+    &:hover{
+      a{
+        opacity: 1;
+      }
+    }
+    a{
+      display: block;
+    }
+    .home, .away{
+      display: flex;
+      justify-content: space-between;
+      width: 6.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .status{
+      font-size: 0.75rem;
+    }
+    .team{
+      display: flex;
+      flex-wrap: wrap;
+      .name, .city{
+        flex: 1 0 100%;
+      }
+      .name{
+        &.favourite{
+          color: $success;
+        }
+        &.winner{
+          font-weight: bold;
+        }
+      }
+      .city{
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

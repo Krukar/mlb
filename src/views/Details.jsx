@@ -6,6 +6,7 @@ Details view of a specific game
 
 // React
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // Actions
 import * as details from 'actions/details.jsx';
@@ -20,19 +21,15 @@ class Details extends Component{
 
     this.state ={
       data: undefined,
-      batting: undefined,
-      linescore: undefined
+      batting: undefined
     }
   }
 
   componentWillMount(){
     details.get(this.props.match.params.id).then(response =>{
-      console.log(response)
-      // TODO: Default if favourite
       this.setState({
         data: response,
-        batting: response.batting[0],
-        linescore: response.linescore,
+        batting: response.batting[0]
       });
     });
   }
@@ -46,11 +43,12 @@ class Details extends Component{
   render() {
     return (
       <div className="details">
-        <Innings linescore={this.state.linescore}></Innings>
+        <div className="back" onClick={() => {this.props.history.goBack()}}>Back to List View</div>
+        <Innings data={this.state.data}></Innings>
         {this.state.data &&
           <div className="toggle">
-            <div className="home" onClick={() => this.setPlayers(0)}>{this.state.data.home_sname}</div>
-            <div className="away" onClick={() => this.setPlayers(1)}>{this.state.data.away_sname}</div>
+            <div className={"home" + (this.state.batting.team_flag === 'home' ? ' active' : '')} onClick={() => this.setPlayers(0)}>{this.state.data.home_sname}</div>
+            <div className={"away" + (this.state.batting.team_flag === 'away' ? ' active' : '')} onClick={() => this.setPlayers(1)}>{this.state.data.away_sname}</div>
           </div>
         }
         <Players batting={this.state.batting}></Players>

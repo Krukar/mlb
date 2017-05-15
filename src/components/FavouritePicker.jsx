@@ -30,8 +30,9 @@ class FavouritePicker extends Component{
     // I'm going to be honest. I originally had teams in a json file, with a for loop to populate this list. Let's be real though, how often do teams change? What is the benefit of making it generated.
     // You end up wasting an ajax call then a for loop to generate a list that will change once every 10 years.
     return (
-      <div className="favourite">
-        <select name="favourite" value={this.state.favourite} onChange={this.handleChange}>
+      <div className="favouritePicker">
+        <h2>Select a favourite team</h2>
+        <select className="select" name="favourite" value={this.state.favourite} onChange={this.handleChange}>
           <option value="LAA">Angels</option>
           <option value="HOU">Astros</option>
           <option value="OAK">Athletics</option>
