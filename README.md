@@ -4,8 +4,13 @@
 
 ## TODO
 - NPM Run Prod script should remove console logs
+- Auto implement cache busting via packages.json version
+- After interview process implement bootstrap
 
 ## Release History
+
+### v0.1.01
+- Cleaned up some minor CSS bugs
 
 ### v0.1.0
 - Project completed and sent to friends to QA and feedback before approval

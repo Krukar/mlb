@@ -5,7 +5,7 @@
 
   @include transitions;
   &:hover{
-    a{
+    .game{
       opacity: 0.25;
     }
   }
@@ -23,12 +23,12 @@
       flex: 1 0 25%;
     }
     &:hover{
-      a{
         opacity: 1;
-      }
     }
     a{
       display: block;
+
+      cursor: pointer;
     }
     .home, .away{
       display: flex;
