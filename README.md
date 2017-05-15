@@ -9,6 +9,9 @@
 
 ## Release History
 
+### v0.1.03
+- Added required to date picker and a fallback if people clear that input
+
 ### v0.1.02
 - Found a team name longer than what I had it set too so gave the team name width extra space
 

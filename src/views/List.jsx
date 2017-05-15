@@ -43,6 +43,17 @@ class List extends Component{
   setDate = (date) => {
     this.reset();
 
+    // If they cleared the input
+    if(!date){
+      this.setState({
+        error: 'Please select a date',
+        games: undefined,
+        loading: false
+      });
+
+      return
+    }
+
     list.get(date).then(response =>{
       // A list of games was successfully returned
       this.setState({

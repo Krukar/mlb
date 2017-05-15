@@ -35,7 +35,7 @@ class DatePicker extends Component{
     return (
       <div className="datePicker">
         <h2>Select date</h2>
-        <input className="input" name="date" type="date" value={this.state.date} onChange={this.handleChange}/>
+        <input className="input" name="date" type="date" value={this.state.date} onChange={this.handleChange} required/>
       </div>
     );
   }
